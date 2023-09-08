@@ -5,7 +5,7 @@ import ParticipantList from '@components/participants-list'
 
 export default function Home() {
   return (
-    <div className="container">
+    <div lang="en" className="container dark">
       <Head>
         <title>Lunch Roulette</title>
         <link rel="icon" href="/favicon.ico" />

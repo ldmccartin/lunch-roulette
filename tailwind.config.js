@@ -7,7 +7,11 @@ const config = {
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}"
   ],
   theme: {
-    extend: {},
+    extend: {
+      "min-width": {
+        "450":"450px"
+      }
+    },
   },
   darkMode: "class",
   plugins: [nextui()]
