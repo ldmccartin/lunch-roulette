@@ -1,6 +1,4 @@
 import Head from 'next/head'
-import Header from '@components/header'
-import Footer from '@components/footer'
 import ParticipantList from '@components/participants-list'
 
 export default function Home() {
@@ -12,11 +10,8 @@ export default function Home() {
       </Head>
 
       <main className=''>
-        <Header title="Lunch Roulette" />
         <ParticipantList />
       </main>
-
-      <Footer />
     </div>
   )
 }

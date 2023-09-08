@@ -3,13 +3,12 @@ import {nextui} from "@nextui-org/react";
 
 const config = {
   content: [
-    // ...
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}"
   ],
   theme: {
     extend: {
-      "min-width": {
-        "450":"450px"
+      minWidth: {
+        450: '450px',
       }
     },
   },
