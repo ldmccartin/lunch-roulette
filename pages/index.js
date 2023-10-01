@@ -1,16 +1,17 @@
 import Head from 'next/head'
-import ParticipantList from '@components/participants-list'
+import RouletteTable from '@components/roulette-table'
 
 export default function Home() {
   return (
-    <div lang="en" className="container dark">
+    <div lang="en" className="flex justify-center dark">
       <Head>
         <title>Lunch Roulette</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main className=''>
-        <ParticipantList />
+        <h1 className='text-4xl mb-8 font-mono'>Lunch Roulette</h1>
+        <RouletteTable />
       </main>
     </div>
   )

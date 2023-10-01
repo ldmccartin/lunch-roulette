@@ -1,5 +1,5 @@
 import '@styles/globals.css'
-import {Providers} from "@components/providers";
+import { Providers } from "@components/providers";
 
 function Application({ Component, pageProps }) {
   return (
