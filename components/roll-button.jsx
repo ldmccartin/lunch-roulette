@@ -4,7 +4,7 @@ import participantsStore from '@state/participants'
 
 import rouletteStore from '@state/roulette'
 
-export default function ParticipantList() {
+export default function rollButton() {
   const rollWinner = rouletteStore((state) => state.rollWinner)
   const calculateRemainingFunds = fundsStore((state) => state.calculateRemainingFunds)
   const participants = participantsStore((state) => state.participants)

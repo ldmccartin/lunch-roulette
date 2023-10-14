@@ -2,7 +2,7 @@ import { Input } from '@nextui-org/input';
 
 import fundsStore from '@state/funds'
 
-const availableFunds = () => {
+export default function availableFunds() {
   const fundsPerParticipant = fundsStore((state) => state.fundsPerParticipant)
   const changeFundsPerParticipant = fundsStore((state) => state.changeFundsPerParticipant)
 
@@ -23,5 +23,3 @@ const availableFunds = () => {
     />
   )
 }
-
-export default availableFunds;

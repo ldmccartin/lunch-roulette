@@ -1,4 +1,5 @@
 import { create } from 'zustand'
+import { round } from 'lodash'
 
 const fundsStore = create((set) => ({
   fundsPerParticipant: 12.90,
@@ -9,8 +10,12 @@ const fundsStore = create((set) => ({
   }),
 
   calculateRemainingFunds: (participants) => set((state) => {
-    const totalCost = participants.reduce((acc, cur) => acc = acc + cur.cost, 0)
-    const remainingFunds = participants.length * state.fundsPerParticipant - totalCost
+    const totalCost = round(participants.reduce((acc, cur) => acc = acc + cur.cost, 0), 2)
+    console.log(totalCost)
+    const totalAllowed = round(participants.length * state.fundsPerParticipant, 2)
+    console.log(totalAllowed)
+    const remainingFunds = round(totalAllowed - totalCost, 2)
+    console.log(remainingFunds)
     return { remainingFunds }
   })
 

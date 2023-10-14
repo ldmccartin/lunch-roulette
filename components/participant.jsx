@@ -1,10 +1,17 @@
 import { Input } from '@nextui-org/input';
 
-const participant = ({index, name, cost, onChangeName, onChangeCost}) => {
+export default function participant({index, name, cost, onChangeName, onChangeCost}) {
   return (
     <div key={index} className='flex gap-2 text-white'>
-      <Input value={name} placeholder='Partiboi' size='sm' type='text' label='Participant' onChange={onChangeName}/>
-      <Input 
+      <Input
+        value={name}
+        placeholder='Partiboi'
+        size='sm'
+        type='text'
+        label='Participant'
+        onChange={onChangeName}
+      />
+      <Input
         value={cost}
         placeholder='0.00'
         size='sm'
@@ -20,5 +27,3 @@ const participant = ({index, name, cost, onChangeName, onChangeCost}) => {
     </div>
   )
 }
-
-export default participant;
