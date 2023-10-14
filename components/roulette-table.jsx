@@ -9,11 +9,11 @@ import rouletteStore from '@state/roulette'
 
 export default function rouletteTable() {
 
-  const { isRolled } = rouletteStore((state) => state)
+  const { winner } = rouletteStore((state) => state)
 
   return (
     <div className='flex-col items-center'>
-      {!isRolled 
+      {!winner 
         ? <>
             <div className='flex gap-2 justify-center items-center'>
               <AvailableFunds/>
