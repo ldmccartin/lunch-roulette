@@ -5,23 +5,26 @@ import participantsStore from '@state/participants'
 const rouletteStore = create((set) => ({
   winner: undefined,
   isRolled: false,
-  hasParticipantError: false,
+  participantError: '',
 
   rollWinner: () => set(() => {
     const participants = participantsStore.getState().participants
-    const unnamedParticipant = participants.some(participant => participant.name.trim() === '')
+    if (participants.length === 0) {
+      return { isRolled: false, participantError: 'Requires at least one participant!', winner: undefined }
+    }
 
-    if(unnamedParticipant) {
-      return { isRolled: false, hasParticipantError: true, winner: undefined }
+    const unnamedParticipant = participants.some(participant => participant.name.trim() === '')
+    if (unnamedParticipant) {
+      return { isRolled: false, participantError: 'All participants must be named!', winner: undefined }
     }
 
     const selection = Math.floor(Math.random() * (participants.length))
     const winner = participants[selection].name
-    return { isRolled: true, hasParticipantError: false, winner }
+    return { isRolled: true, hasParticipantError: '', winner }
   }),
 
   resetRoulette: () => set(() => {
-    return { isRolled: false, hasParticipantError: false, winner: undefined }
+    return { isRolled: false, hasParticipantError: '', winner: undefined }
   })
 
 }))

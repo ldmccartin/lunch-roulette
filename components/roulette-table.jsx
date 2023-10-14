@@ -3,7 +3,7 @@ import ParticipantList from '@components/participant-list'
 import RollButton from '@components/roll-button'
 import ResetButton from '@components/reset-button'
 import Winner from '@components/winner'
-import ParticipantNameError from '@components/participant-name-error'
+import ParticipantError from '@components/participant-error'
 
 import rouletteStore from '@state/roulette'
 
@@ -19,7 +19,7 @@ export default function rouletteTable() {
               <AvailableFunds/>
               <RollButton />
             </div>
-            <ParticipantNameError />
+            <ParticipantError />
             <ParticipantList />
           </>
         : 
