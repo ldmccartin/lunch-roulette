@@ -5,11 +5,10 @@ import ResetButton from '@components/reset-button'
 import Winner from '@components/winner'
 import ParticipantError from '@components/participant-error'
 
-import rouletteStore from '@state/roulette'
+import participantsStore from '@state/participants'
 
 export default function rouletteTable() {
-
-  const { winner } = rouletteStore((state) => state)
+  const { winner } = participantsStore((state) => state)
 
   return (
     <div className='flex-col items-center'>

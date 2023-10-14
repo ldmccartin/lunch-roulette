@@ -1,16 +1,26 @@
 import { Button } from '@nextui-org/button'
+
 import fundsStore from '@state/funds'
 import participantsStore from '@state/participants'
 
-import rouletteStore from '@state/roulette'
+import { rollInterimWinner, validate } from '../helpers/show-winner'
 
 export default function rollButton() {
-  const rollWinner = rouletteStore((state) => state.rollWinner)
   const calculateRemainingFunds = fundsStore((state) => state.calculateRemainingFunds)
-  const participants = participantsStore((state) => state.participants)
+  const { participants, setParticipantError, setWinner, setInterimWinner } = participantsStore((state) => state)
+
+  const handleClick = () => {
+    const valid = validate(participants, setParticipantError)
+
+    if (valid) {
+      rollInterimWinner(participants, setInterimWinner)
+      setWinner(participants)
+      calculateRemainingFunds(participants)
+    }
+  }
 
   return (
-    <Button className='my-1 text-white' color='primary' onClick={() => { rollWinner(); calculateRemainingFunds(participants) }}>
+    <Button className='my-1 text-white' color='primary' onClick={() => { handleClick() }}>
       Roll
     </Button>
   )

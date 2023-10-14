@@ -1,11 +1,8 @@
 import { Button } from '@nextui-org/button'
-
-import rouletteStore from '@state/roulette'
 import participantsStore from '@state/participants'
 
 export default function resetButton() {
-  const resetRoulette = rouletteStore((state) => state.resetRoulette)
-  const resetParticipants = participantsStore((state) => state.resetParticipants)
+  const { resetParticipants, resetRoulette } = participantsStore((state) => state)
 
   return (
     <Button className='my-1 text-white' color='primary' onClick={() =>  { resetRoulette(); resetParticipants() }} >

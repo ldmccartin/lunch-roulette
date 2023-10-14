@@ -1,7 +1,7 @@
-import rouletteStore from '@state/roulette'
+import participantStore from '@state/participants'
 
-export default function participantNameError() {
-  const { participantError } = rouletteStore((state) => state)
+export default function participantError() {
+  const { participantError } = participantStore((state) => state)
 
   if (participantError) {
     return (

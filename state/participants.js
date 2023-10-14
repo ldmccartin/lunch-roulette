@@ -7,6 +7,9 @@ const participantsStore = create((set) => ({
     name: '',
     cost: fundsStore.getState().fundsPerParticipant
   }],
+  participantError: '',
+  winner: undefined,
+  interimWinner: undefined,
   
   addParticipant: () => set((state) => (
     { participants: [
@@ -49,6 +52,24 @@ const participantsStore = create((set) => ({
         cost: fundsStore.getState().fundsPerParticipant
       }
     ]
+  }),
+
+  setParticipantError: (error) => set(() => {
+    return { participantError: error }
+  }),
+
+  setWinner: (participants) => set(() => {
+    const selection = Math.floor(Math.random() * (participants.length))
+    const winner = participants[selection].name
+    return { participantError: '', winner }
+  }),
+
+  resetRoulette: () => set(() => {
+    return { participantError: '', winner: undefined }
+  }),
+
+  setInterimWinner: (participant) => set(() => {
+    return { interimWinner: participant }
   })
 
 }))
