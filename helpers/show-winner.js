@@ -15,18 +15,26 @@ const validate = (participants, setParticipantError) => {
   return true;
 }
 
-const rollInterimWinner = async (participants, setInterimWinner) => {
-  let lastSelection;
-  for (let index = 0; index < 50; index++) {
-    let selection = Math.floor(Math.random() * (participants.length))
-    
-    if (selection === lastSelection) {
-      selection++
-    }
+const getRandomParticipant = (participantsCount) => {
+  return Math.floor(Math.random() * (participantsCount))
+}
 
-    await sleep(50)
-    setInterimWinner(participants[selection].name)
+const rollInterimWinner = async (participants, setInterimWinner) => {
+  if (participants.length > 1) {
+    let lastSelection;
+    let selection = getRandomParticipant(participants.length)
+
+    for (let index = 0; index < 50; index++) {      
+      while (selection === lastSelection) {
+        selection = getRandomParticipant(participants.length)
+      }
+  
+      lastSelection = selection
+      await sleep(50 + (2 * index))
+      setInterimWinner(participants[selection].name)
+    }
   }
+  
   setInterimWinner(undefined)
 }
 
